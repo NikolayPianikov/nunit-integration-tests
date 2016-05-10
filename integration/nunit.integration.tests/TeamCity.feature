@@ -217,14 +217,18 @@ Examples:
 	| Version40        |
 
 	@teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run many test for NUnit3
+Scenario Outline: The NUnit sends TeamCity service messages when I run many test
 	Given Framework version is <frameworkVersion>	
-	And I have added 100 successful methods as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
+	And I have added 1000 successful methods as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests1
+	And I have added 1000 successful methods as SuccessfulTest to the class Foo.Tests.UnitTests2 for foo.tests2
 	And I have created the folder mocks
-	And I have added NUnit framework references to foo.tests
+	And I have added NUnit framework references to foo.tests1
+	And I have added NUnit framework references to foo.tests2
 	And I have copied NUnit framework references to folder mocks
-	And I have compiled the assembly foo.tests to file mocks\foo.tests.dll	
-	And I have added the assembly mocks\foo.tests.dll to the list of testing assemblies
+	And I have compiled the assembly foo.tests1 to file mocks\foo.tests1.dll	
+	And I have compiled the assembly foo.tests2 to file mocks\foo.tests2.dll
+	And I have added the assembly mocks\foo.tests1.dll to the list of testing assemblies
+	And I have added the assembly mocks\foo.tests2.dll to the list of testing assemblies
 	And I want to use CmdArguments type of TeamCity integration
 	When I run NUnit console
 	Then the exit code should be 0
