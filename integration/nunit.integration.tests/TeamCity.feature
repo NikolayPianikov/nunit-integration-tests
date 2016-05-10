@@ -1,32 +1,7 @@
 ﻿Feature: NUnit should support TeamCity	
 
 Background:
-	Given NUnit path is ..\
-
-@teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run successful test for NUnit2 framework
-	Given Framework version is <frameworkVersion>	
-	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
-	And I have created the folder mocks
-	And I have added the reference ..\..\..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll to foo.tests
-	And I have copied the reference ..\..\..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll to folder mocks
-	And I have compiled the assembly foo.tests to file mocks\foo.tests.dll	
-	And I have added the assembly mocks\foo.tests.dll to the list of testing assemblies
-	And I want to use CmdArguments type of TeamCity integration
-	When I run NUnit console
-	Then the exit code should be 0
-	And the output should contain TeamCity service messages:
-	|                   | name                                  | captureStandardOutput | duration | flowId | parent | message      | details                           | out    |
-	| testSuiteStarted  | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |
-	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest   | false                 |          | .+     |        |              |                                   |        |
-	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest   |                       |          | .+     |        |              |                                   | output |
-	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest   |                       | \d+      | .+     |        |              |                                   |        |
-	| testSuiteFinished | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |
-
-Examples:
-	| frameworkVersion |
-	| Version45        |
-	| Version40        |
+	Given NUnit path is ..\nunit\
 
 @teamcity
 Scenario Outline: The NUnit sends TeamCity service messages when I run successful test for NUnit3
@@ -235,6 +210,24 @@ Scenario Outline: The NUnit sends TeamCity service messages when I run successfu
 	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |         |         |        |
 	| flowFinished      |                                     |                       |          | .+     |        |         |         |        |
 	| testSuiteFinished | foo2.tests.dll                      |                       |          | .+     |        |         |         |        |
+
+Examples:
+	| frameworkVersion |
+	| Version45        |
+	| Version40        |
+
+	@teamcity
+Scenario Outline: The NUnit sends TeamCity service messages when I run many test for NUnit3
+	Given Framework version is <frameworkVersion>	
+	And I have added 100 successful methods as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
+	And I have created the folder mocks
+	And I have added NUnit framework references to foo.tests
+	And I have copied NUnit framework references to folder mocks
+	And I have compiled the assembly foo.tests to file mocks\foo.tests.dll	
+	And I have added the assembly mocks\foo.tests.dll to the list of testing assemblies
+	And I want to use CmdArguments type of TeamCity integration
+	When I run NUnit console
+	Then the exit code should be 0
 
 Examples:
 	| frameworkVersion |

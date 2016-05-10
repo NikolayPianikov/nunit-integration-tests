@@ -1,7 +1,7 @@
 ﻿Feature: NUnit should support excluding and including tests
 
 Background:
-	Given NUnit path is ..\
+	Given NUnit path is ..\nunit\
 	
 @teamcity
 Scenario Outline: I can run all tests except those in the CatA category

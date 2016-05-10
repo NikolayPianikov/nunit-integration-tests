@@ -1,7 +1,7 @@
 ﻿Feature: NUnit should running from different locations and appBase
 
 Background:
-	Given NUnit path is ..\
+	Given NUnit path is ..\nunit\
 	
 Scenario Outline: I can run tests from nested directory
 	Given Framework version is <frameworkVersion>	

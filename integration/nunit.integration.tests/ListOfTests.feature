@@ -1,7 +1,7 @@
 ﻿Feature: NUnit should support the list of tests to explore and run
 
 Background:
-	Given NUnit path is ..\
+	Given NUnit path is ..\nunit\
 	
 @teamcity
 Scenario Outline: I can explore tests and write the list of tests to file

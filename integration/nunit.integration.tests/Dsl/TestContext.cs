@@ -11,9 +11,12 @@
 
         public TestContext()
         {
-            SandboxPath = Path.GetFullPath(GetSandboxPath());
-            CurrentDirectory = SandboxPath;
+            AssemblyDirectory = Path.GetDirectoryName(new Uri(typeof(NUnitSteps).Assembly.CodeBase).LocalPath);
+            SandboxPath = Path.Combine(AssemblyDirectory, GetSandboxPath());
+            CurrentDirectory = SandboxPath;            
         }
+
+        public string AssemblyDirectory { get; private set; }
 
         public string SandboxPath { get; private set; }
 

@@ -1,7 +1,7 @@
 ﻿Feature: NUnit allows to load config files for tests
 
 Background:
-	Given NUnit path is ..\
+	Given NUnit path is ..\nunit\
 	
 Scenario Outline: I can the test with config file
 	Given Framework version is <frameworkVersion>	

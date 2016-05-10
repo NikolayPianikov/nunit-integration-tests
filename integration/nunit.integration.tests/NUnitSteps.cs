@@ -17,9 +17,9 @@
         {
             var ctx = ScenarioContext.Current.GetTestContext();
             var configuration = ctx.GetOrCreateNUnitConfiguration();
-            configuration.OriginNUnitPath = Path.GetFullPath(originNUnitPath);
+            configuration.OriginNUnitPath = Path.GetFullPath(Path.Combine(ctx.AssemblyDirectory, originNUnitPath));
             var environmentManager = new EnvironmentManager();
-            configuration.NUnitConsolePath = environmentManager.PrepareNUnitClonsoleAndGetPath(ctx.SandboxPath, originNUnitPath);
+            configuration.NUnitConsolePath = environmentManager.PrepareNUnitClonsoleAndGetPath(ctx.SandboxPath, configuration.OriginNUnitPath);
         }
 
         [Given(@"Framework version is (.+)")]
@@ -45,6 +45,18 @@
             var testAssembly = ctx.GetOrCreateAssembly(assemblyName);
             var testClass = testAssembly.GetOrCreateClass(namespaceName, className);
             testClass.GetOrCreateMethod(testMethodName, methodTemplate);            
+        }
+
+        [Given(@"I have added (\d+) (.+) methods as (.+) to the class (.+)\.(.+) for (.+)")]
+        public void AddMethods(int methodsNumber, string methodTemplate, string testMethodName, string namespaceName, string className, string assemblyName)
+        {
+            var ctx = ScenarioContext.Current.GetTestContext();
+            var testAssembly = ctx.GetOrCreateAssembly(assemblyName);
+            var testClass = testAssembly.GetOrCreateClass(namespaceName, className);
+            for (var methodIndex = 0; methodIndex < methodsNumber; methodIndex++)
+            {
+                testClass.GetOrCreateMethod(testMethodName + "_" + methodIndex, methodTemplate);
+            }
         }
 
         [Given(@"I have added attribute (.+) to the class (.+)\.(.+) for (.+)")]
@@ -143,7 +155,7 @@
         }
 
         [Given(@"I have added NUnit framework references to (.+)")]
-        public void AddNUnitFrameworkReference( string assemblyName)
+        public void AddNUnitFrameworkReference(string assemblyName)
         {
             var ctx = ScenarioContext.Current.GetTestContext();
             var assembly = ctx.GetOrCreateAssembly(assemblyName);            

@@ -1,7 +1,7 @@
 ﻿Feature: NUnit should returns negative exit code in the exceptional cases
 
 Background:
-	Given NUnit path is ..\
+	Given NUnit path is ..\nunit\
 	
 @teamcity
 Scenario Outline: The NUnit returns negative exit -2 code when I run it without any assemblies

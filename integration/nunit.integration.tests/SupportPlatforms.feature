@@ -1,7 +1,7 @@
 ﻿Feature: NUnit should support platforms
 
 Background:
-	Given NUnit path is ..\
+	Given NUnit path is ..\nunit\
 	
 Scenario Outline: I can run test for different platforms
 	Given Framework version is <frameworkVersion>	
