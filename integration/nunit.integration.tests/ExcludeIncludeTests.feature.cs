@@ -212,11 +212,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("I can run all tests except those in the CatA category fron NUnit 2 framework")]
+        [NUnit.Framework.DescriptionAttribute("I can run all tests except those in the CatA category from NUnit 2 framework")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void ICanRunAllTestsExceptThoseInTheCatACategoryFronNUnit2Framework(string frameworkVersion, string[] exampleTags)
+        public virtual void ICanRunAllTestsExceptThoseInTheCatACategoryFromNUnit2Framework(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -224,7 +224,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can run all tests except those in the CatA category fron NUnit 2 framework", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can run all tests except those in the CatA category from NUnit 2 framework", @__tags);
 #line 63
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -240,11 +240,11 @@ this.FeatureBackground();
 #line 67
  testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 68
- testRunner.And("I have added the reference ..\\..\\..\\..\\packages\\NUnit.2.6.4\\lib\\nunit.framework.d" +
-                    "ll to foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have added the reference ..\\..\\..\\packages\\NUnit.2.6.4\\lib\\nunit.framework.dll " +
+                    "to foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 69
- testRunner.And("I have copied the reference ..\\..\\..\\..\\packages\\NUnit.2.6.4\\lib\\nunit.framework." +
-                    "dll to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have copied the reference ..\\..\\..\\packages\\NUnit.2.6.4\\lib\\nunit.framework.dll" +
+                    " to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 70
  testRunner.And("I have compiled the assembly foo.tests to file mocks\\foo.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 71

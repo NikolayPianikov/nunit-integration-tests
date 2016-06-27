@@ -38,6 +38,7 @@
     	<DownloadFile
 	    	Url="https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 	    	LocalFilePath="nuget.exe"/>
+		<Exec Command="nuget.exe install NUnit -Version 2.6.4 -o packages"/>
 		<Exec Command="nuget.exe restore nunit-integration.sln"/>
 		<Exec Command="packages\NUnit.ConsoleRunner.3.2.1\tools\nunit3-console.exe bin\Debug\nunit.integration.tests.dll --noresult"/>
 	</Target>
