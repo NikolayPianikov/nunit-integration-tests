@@ -25,7 +25,7 @@
             process.StartInfo.RedirectStandardOutput = true;
             foreach (var envVariable in setup.EnvVariables)
             {
-                process.StartInfo.EnvironmentVariables.Add(envVariable.Key, envVariable.Value);
+                process.StartInfo.EnvironmentVariables[envVariable.Key] = envVariable.Value;
             }
 
             foreach (var artifact in setup.Artifacts)
