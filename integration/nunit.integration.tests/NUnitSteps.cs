@@ -240,7 +240,7 @@
                 agent.Kill();                
             }
 
-            Assert.IsEmpty(agents, $"Agents which was not finished: {agentsList}.\nSee {ctx}");
+            Assert.IsEmpty(agents, $"Agents are not finished: {agentsList}.\nSee {ctx}");
         }
 
         [When(@"I remove (.+) from NUnit folder")]
