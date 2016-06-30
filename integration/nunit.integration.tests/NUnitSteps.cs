@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     using Dsl;
 
@@ -221,7 +222,26 @@
 
             var testSession = runner.Run(ctx, setupFactory.Create(ctx));
             ctx.TestSession = testSession;            
-        }        
+        }
+
+        [Then(@"processes (.+) are finished")]
+        public void CheckProcessesWereFinished(string processName)
+        {
+            var ctx = ScenarioContext.Current.GetTestContext();
+            var agents = (
+                from process in ctx.TestSession.ProcessesAfter
+                where process.ProcessName == processName
+                select process).ToList();
+
+            var agentsList = string.Join(", ", agents.Select(i => $"{i.Id}: {i.ProcessName}"));
+
+            foreach (var agent in agents)
+            {
+                agent.Kill();                
+            }
+
+            Assert.IsEmpty(agents, $"Agents which was not finished: {agentsList}.\nSee {ctx}");
+        }
 
         [When(@"I remove (.+) from NUnit folder")]
         public void RemoveFileOrDirectoryFromNUnitDirectory(string fileToRemove)

@@ -3,11 +3,15 @@
     using System;
     using System.Diagnostics;
     using System.IO;
+    using System.Linq;
+    using System.Text;
 
     internal class NUnitRunner
     {
         public TestSession Run(TestContext ctx, CommandLineSetup setup)
         {
+            var processesBefore = Process.GetProcesses().Select(i => i.Id).ToList();
+
             var cmd = Path.Combine(ctx.SandboxPath, "run.cmd");
             File.WriteAllText(
                 cmd,
@@ -34,10 +38,40 @@
             }
 
             process.Start();
-            var output = process.StandardOutput.ReadToEnd();
+            var finish = false;
+            var output = new StringBuilder();
+            while (!finish && !process.WaitForExit(1))
+            {
+                do
+                {
+                    var readLineTask = process.StandardOutput.ReadLineAsync();
+                    if (!readLineTask.Wait(100))
+                    {
+                        finish = true;
+                        break;
+                    }
 
+                    var line = readLineTask.Result;
+                    if (line != null)
+                    {
+                        output.AppendLine(line);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                while (true);                
+            }
+            
             process.WaitForExit();
-            return new TestSession(ctx, process.ExitCode, output);            
+
+            var processesAfter = (
+                from processItem in Process.GetProcesses()
+                where !processesBefore.Contains(processItem.Id)
+                select processItem).ToList();
+
+            return new TestSession(ctx, process.ExitCode, output.ToString(), processesAfter);
         }        
     }
 }

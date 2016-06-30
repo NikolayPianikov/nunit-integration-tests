@@ -14,14 +14,17 @@
     internal class Compiler
     {
         private static readonly SyntaxTree TestClassSyntaxTree;
+        private static readonly SyntaxTree UtilsSyntaxTree;
 
         private const string AssemblyInfoResourceName = "nunit.integration.tests.Templates.AssemblyInfo.cs";
+        private const string UtilsResourceName = "nunit.integration.tests.Templates.Utils.cs";
         private const string TestFileResourceName = "nunit.integration.tests.Templates.UnitTest.cs";
-        private readonly static ResourceManager ResourceManager = new ResourceManager();
+        private static readonly ResourceManager ResourceManager = new ResourceManager();
 
         static Compiler()
         {
             TestClassSyntaxTree = CSharpSyntaxTree.ParseText(ResourceManager.GetContentFromResource(TestFileResourceName));
+            UtilsSyntaxTree = CSharpSyntaxTree.ParseText(ResourceManager.GetContentFromResource(UtilsResourceName));
         }
 
         public void Compile(TestAssembly testAssembly, string assemblyFileName, TargetDotNetFrameworkVersion dotNetFrameworkVersion)
@@ -38,7 +41,7 @@
                     break;
             }
 
-            var assemblyInfoSyntaxTree = CSharpSyntaxTree.ParseText(ResourceManager.GetContentFromResource(AssemblyInfoResourceName) + Environment.NewLine + string.Join(Environment.NewLine, testAssembly.Attributes));
+            var assemblyInfoSyntaxTree = CSharpSyntaxTree.ParseText(ResourceManager.GetContentFromResource(AssemblyInfoResourceName) + Environment.NewLine + string.Join(Environment.NewLine, testAssembly.Attributes));            
             var compilation =
                 CSharpCompilation.Create(Path.GetFileName(assemblyFileName))
                     .WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
@@ -47,6 +50,7 @@
                     .AddReferences(GetDotNetFrameworkReferences(dotNetFrameworkVersion, architecture))
                     .AddReferences(testAssembly.References.Select(assembly => MetadataReference.CreateFromFile(assembly)))
                     .AddSyntaxTrees(assemblyInfoSyntaxTree)
+                    .AddSyntaxTrees(UtilsSyntaxTree)
                     .AddSyntaxTrees(testAssembly.Classes.Select(CreateClassSyntaxTree));
 
             using (var file = new FileStream(assemblyFileName, FileMode.Create))

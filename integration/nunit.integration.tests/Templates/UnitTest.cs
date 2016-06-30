@@ -1,7 +1,6 @@
 ﻿namespace nunit.integration.tests.Templates
 {
     using System;
-    using System.Configuration;
 
     using NUnit.Framework;
 
@@ -15,19 +14,19 @@
         [SetUp]
         public void FailedSetup()
         {
-            throw new Exception("Exception during setup");
+            throw new System.Exception("Exception during setup");
         }
 
         [TearDown]
         public void FailedTearDown()
         {
-            throw new Exception("Exception during tear down");
+            throw new System.Exception("Exception during tear down");
         }
 
         [Test]
         public void Successful()
         {            
-            Console.Write("output");
+            System.Console.Write("output");
         }
 
         [Test]
@@ -56,15 +55,15 @@
         [Test, Parallelizable]
         public void SuccessfulParallelizable()
         {
-            Console.WriteLine($"!!! ManagedThreadId = {System.Threading.Thread.CurrentThread.ManagedThreadId}");
+            System.Console.WriteLine($"!!! ManagedThreadId = {System.Threading.Thread.CurrentThread.ManagedThreadId}");
             System.Threading.Thread.Sleep(100);            
         }
 
         [Test]
         public void FailedStackOverflow()
         {
-            Action[] infiniteRecursion = null;
-            infiniteRecursion = new Action[1] { () => { infiniteRecursion[0](); } };
+            System.Action[] infiniteRecursion = null;
+            infiniteRecursion = new System.Action[1] { () => { infiniteRecursion[0](); } };
             infiniteRecursion[0]();
         }
 
@@ -81,9 +80,15 @@
         [Test]
         public void SuccessfulWithConfig()
         {
-            Console.Write(System.IO.Path.GetFileName(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile));
+            System.Console.Write(System.IO.Path.GetFileName(System.AppDomain.CurrentDomain.SetupInformation.ConfigurationFile));
             var message = System.Configuration.ConfigurationManager.AppSettings["TestMessage"];
             Assert.IsNotNull(message);
+        }
+
+        [Test]
+        public void UnloadingDomain()
+        {
+            UnloadingDomainUtil.Create();
         }
     }
 }

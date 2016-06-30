@@ -49,6 +49,8 @@
                 .Replace("\"", string.Empty)
                 .Replace(",null", string.Empty)
                 .Replace(",", "_")
+                .Replace("]", string.Empty)
+                .Replace("[", string.Empty)
                 .Replace(")", string.Empty) ?? string.Empty;
         }
     }

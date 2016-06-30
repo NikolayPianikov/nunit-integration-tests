@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotMemory.Unit, Version=103.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\JetBrains.dotMemoryUnit.2.3.20160517.113140\lib\dotMemory.Unit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="JetBrains.TeamCity.ServiceMessages, Version=3.0.5.1, Culture=neutral, PublicKeyToken=620ded7f0cf61090, processorArchitecture=MSIL">
       <HintPath>..\..\packages\TeamCity.ServiceMessages.3.0.5.1\lib\net35\JetBrains.TeamCity.ServiceMessages.dll</HintPath>
       <Private>True</Private>
@@ -149,6 +153,7 @@
     <Compile Include="Dsl\Method.cs" />
     <Compile Include="Dsl\TestOutputSummaryParser.cs" />
     <Compile Include="Dsl\TestSession.cs" />
+    <EmbeddedResource Include="Templates\Utils.cs" />
     <EmbeddedResource Include="Templates\AssemblyInfo.cs" />
     <EmbeddedResource Include="Templates\UnitTest.cs" />
     <Compile Include="AppConfig.feature.cs">
@@ -178,6 +183,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RunningFromDifferentLocations.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ReleaseOSResources.feature.cs">
+      <DependentUpon>ReleaseOSResources.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="SupportPlatforms.feature.cs">
       <AutoGen>True</AutoGen>
@@ -213,6 +223,10 @@
     <None Include="RunningFromDifferentLocations.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RunningFromDifferentLocations.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ReleaseOSResources.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ReleaseOSResources.feature.cs</LastGenOutput>
     </None>
     <None Include="SupportPlatforms.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
