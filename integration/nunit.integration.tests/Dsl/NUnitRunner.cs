@@ -38,32 +38,14 @@
             }
 
             process.Start();
-            var finish = false;
-            var output = new StringBuilder();
-            while (!finish && !process.WaitForExit(1))
-            {
-                do
-                {
-                    var readLineTask = process.StandardOutput.ReadLineAsync();
-                    if (!readLineTask.Wait(100))
-                    {
-                        finish = true;
-                        break;
-                    }
 
-                    var line = readLineTask.Result;
-                    if (line != null)
-                    {
-                        output.AppendLine(line);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                while (true);                
+            var output = string.Empty;
+            var readToEndTask = process.StandardOutput.ReadToEndAsync();
+            if (readToEndTask.Wait(TimeSpan.FromSeconds(30)))
+            {
+                output = readToEndTask.Result;
             }
-            
+
             process.WaitForExit();
 
             var processesAfter = (
@@ -71,7 +53,7 @@
                 where !processesBefore.Contains(processItem.Id)
                 select processItem).ToList();
 
-            return new TestSession(ctx, process.ExitCode, output.ToString(), processesAfter);
+            return new TestSession(ctx, process.ExitCode, output, processesAfter);
         }        
     }
 }
