@@ -42,6 +42,12 @@
             yield return Path.Combine(nunitBasePath, "NUnit.System.Linq.dll");
         }
 
+        public IEnumerable<string> EnumerateNUnitReferences(string nunitBasePath, TargetDotNetFrameworkVersion frameworkVersion)
+        {
+            var nunitFrameworkPath = Path.Combine(nunitBasePath, PathUtilities.GetNUnitAssembliesPath(frameworkVersion));
+            yield return Path.Combine(nunitFrameworkPath, "nunit.framework.dll");            
+        }
+
         public void CreateDirectory(string directoryName)
         {
             if (directoryName == null)

@@ -162,7 +162,7 @@
             var assembly = ctx.GetOrCreateAssembly(assemblyName);            
             var environmentManager = new EnvironmentManager();
             var configuration = ctx.GetOrCreateNUnitConfiguration();
-            foreach (var reference in environmentManager.EnumerateNUnitAssemblies(configuration.OriginNUnitPath, configuration.FrameworkVersion))
+            foreach (var reference in environmentManager.EnumerateNUnitReferences(configuration.OriginNUnitPath, configuration.FrameworkVersion))
             {
                 assembly.AddReference(reference);                
             }
