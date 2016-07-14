@@ -8,7 +8,7 @@
 
     internal class EnvironmentManager
     {
-        private static readonly string[] NUnitFiles = { Const.NUnitConsoleFileName, Const.NUnitConsoleFileName + ".config", "nunit.engine.api.dll", "nunit.engine.dll", "NUnit.System.Linq.dll", "Mono.Cecil.dll", "nunit-agent.exe", "nunit-agent.exe.config", "nunit-agent-x86.exe", "nunit-agent-x86.exe.config", "nunit.engine.addins", "addins" };
+        private static readonly string[] NUnitFiles = { Const.NUnitConsoleFileName, Const.NUnitConsoleFileName + ".config", "nunit.engine.api.dll", "nunit.engine.dll", "Mono.Cecil.dll", "NUnit.System.Linq.dll", "nunit-agent.exe", "nunit-agent.exe.config", "nunit-agent-x86.exe", "nunit-agent-x86.exe.config", "nunit.engine.addins", "addins" };
 
         public void CopyNUnitFrameworkAssemblies(string directoryName, string originNUnitPath, TargetDotNetFrameworkVersion frameworkVersion)
         {
@@ -37,8 +37,9 @@
 
         public IEnumerable<string> EnumerateNUnitAssemblies(string nunitBasePath, TargetDotNetFrameworkVersion frameworkVersion)
         {
-            var nunitPath = Path.Combine(nunitBasePath, PathUtilities.GetNUnitAssembliesPath(frameworkVersion));
-            yield return Path.Combine(nunitPath, "nunit.framework.dll");
+            var nunitFrameworkPath = Path.Combine(nunitBasePath, PathUtilities.GetNUnitAssembliesPath(frameworkVersion));
+            yield return Path.Combine(nunitFrameworkPath, "nunit.framework.dll");
+            yield return Path.Combine(nunitBasePath, "NUnit.System.Linq.dll");
         }
 
         public void CreateDirectory(string directoryName)
