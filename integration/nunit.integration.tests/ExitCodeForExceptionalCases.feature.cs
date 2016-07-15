@@ -72,7 +72,7 @@ namespace nunit.integration.tests
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit returns negative exit -2 code when I run it without any assemblies")]
+        [NUnit.Framework.DescriptionAttribute("NUnit returns negative exit -2 code when I run it without any assemblies")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", "InProcess", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "InProcess", new string[0])]
@@ -80,7 +80,7 @@ namespace nunit.integration.tests
         [NUnit.Framework.TestCaseAttribute("Version40", "Separate", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "Multiple", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "Multiple", new string[0])]
-        public virtual void TheNUnitReturnsNegativeExit_2CodeWhenIRunItWithoutAnyAssemblies(string frameworkVersion, string process, string[] exampleTags)
+        public virtual void NUnitReturnsNegativeExit_2CodeWhenIRunItWithoutAnyAssemblies(string frameworkVersion, string process, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -88,7 +88,7 @@ namespace nunit.integration.tests
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit returns negative exit -2 code when I run it without any assemblies", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns negative exit -2 code when I run it without any assemblies", @__tags);
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -109,8 +109,7 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit returns negative exit -2 code when I run it without nunit.framework.dll" +
-            "")]
+        [NUnit.Framework.DescriptionAttribute("NUnit returns negative exit -2 code when I run it without nunit.framework.dll")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", "InProcess", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "InProcess", new string[0])]
@@ -118,7 +117,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("Version40", "Separate", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "Multiple", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "Multiple", new string[0])]
-        public virtual void TheNUnitReturnsNegativeExit_2CodeWhenIRunItWithoutNunit_Framework_Dll(string frameworkVersion, string process, string[] exampleTags)
+        public virtual void NUnitReturnsNegativeExit_2CodeWhenIRunItWithoutNunit_Framework_Dll(string frameworkVersion, string process, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -126,8 +125,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit returns negative exit -2 code when I run it without nunit.framework.dll" +
-                    "", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns negative exit -2 code when I run it without nunit.framework.dll", @__tags);
 #line 24
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -156,8 +154,8 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit returns negative exit code when the some part of NUnit console is not e" +
-            "xist")]
+        [NUnit.Framework.DescriptionAttribute("NUnit returns negative exit code when the some part of NUnit console is not exist" +
+            "")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version20", "nunit.engine.dll", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "nunit.engine.dll", new string[0])]
@@ -171,7 +169,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("Version20", "nunit-agent.exe", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "nunit-agent.exe", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "nunit-agent.exe", new string[0])]
-        public virtual void TheNUnitReturnsNegativeExitCodeWhenTheSomePartOfNUnitConsoleIsNotExist(string frameworkVersion, string nunitConsolePart, string[] exampleTags)
+        public virtual void NUnitReturnsNegativeExitCodeWhenTheSomePartOfNUnitConsoleIsNotExist(string frameworkVersion, string nunitConsolePart, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -179,8 +177,8 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit returns negative exit code when the some part of NUnit console is not e" +
-                    "xist", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns negative exit code when the some part of NUnit console is not exist" +
+                    "", @__tags);
 #line 45
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -211,7 +209,7 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit returns exit code -100 when the test throws StackOverflow exception")]
+        [NUnit.Framework.DescriptionAttribute("NUnit returns exit code -100 when the test throws StackOverflow exception")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", "InProcess", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "InProcess", new string[0])]
@@ -219,7 +217,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("Version40", "Separate", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "Multiple", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "Multiple", new string[0])]
-        public virtual void TheNUnitReturnsExitCode_100WhenTheTestThrowsStackOverflowException(string frameworkVersion, string process, string[] exampleTags)
+        public virtual void NUnitReturnsExitCode_100WhenTheTestThrowsStackOverflowException(string frameworkVersion, string process, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -227,7 +225,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit returns exit code -100 when the test throws StackOverflow exception", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns exit code -100 when the test throws StackOverflow exception", @__tags);
 #line 73
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -260,7 +258,7 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit returns positive exit code when the test throws OutOfMemory exception")]
+        [NUnit.Framework.DescriptionAttribute("NUnit returns positive exit code when the test throws OutOfMemory exception")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", "InProcess", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "InProcess", new string[0])]
@@ -268,7 +266,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("Version40", "Separate", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "Multiple", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "Multiple", new string[0])]
-        public virtual void TheNUnitReturnsPositiveExitCodeWhenTheTestThrowsOutOfMemoryException(string frameworkVersion, string process, string[] exampleTags)
+        public virtual void NUnitReturnsPositiveExitCodeWhenTheTestThrowsOutOfMemoryException(string frameworkVersion, string process, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -276,7 +274,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit returns positive exit code when the test throws OutOfMemory exception", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns positive exit code when the test throws OutOfMemory exception", @__tags);
 #line 96
 this.ScenarioSetup(scenarioInfo);
 #line 3

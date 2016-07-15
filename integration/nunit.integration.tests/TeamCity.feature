@@ -4,7 +4,7 @@ Background:
 	Given NUnit path is ..\nunit\
 
 @teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run successful test for NUnit3
+Scenario Outline: NUnit sends TeamCity's service messages when I run successful test for NUnit3
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
 	And I have created the folder mocks
@@ -16,14 +16,14 @@ Scenario Outline: The NUnit sends TeamCity service messages when I run successfu
 	When I run NUnit console
 	Then the exit code should be 0
 	And the output should contain TeamCity service messages:
-	|                   | name                                  | captureStandardOutput | duration | flowId | parent | message      | details                           | out    |
-	| testSuiteStarted  | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |
-	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |
-	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest   | false                 |          | .+     |        |              |                                   |        |
-	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest   |                       |          | .+     |        |              |                                   | output |
-	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest   |                       | \d+      | .+     |        |              |                                   |        |
-	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |
-	| testSuiteFinished | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |
+	|                   | name                                | captureStandardOutput | duration | flowId | parent | message | details | out    | tc:tags                       |
+	| testSuiteStarted  | foo.tests.dll                       |                       |          | .+     |        |         |         |        |                               |
+	| flowStarted       |                                     |                       |          | .+     | .+     |         |         |        |                               |
+	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |         |         |        |                               |
+	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        |         |         | output | tc:parseServiceMessagesInside |
+	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |         |         |        |                               |
+	| flowFinished      |                                     |                       |          | .+     |        |         |         |        |                               |
+	| testSuiteFinished | foo.tests.dll                       |                       |          | .+     |        |         |         |        |                               |
 
 Examples:
 	| frameworkVersion |
@@ -31,7 +31,7 @@ Examples:
 	| Version40        |
 	
 @teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run it for different types of tests
+Scenario Outline: NUnit sends TeamCity's service messages when I run it for different types of tests
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
 	And I have added failed method as FailedTest to the class Foo.Tests.UnitTests2 for foo.tests
@@ -47,27 +47,27 @@ Scenario Outline: The NUnit sends TeamCity service messages when I run it for di
 	When I run NUnit console
 	Then the exit code should be 1
 	And the output should contain TeamCity service messages:
-	|                   | name                                  | captureStandardOutput | duration | flowId | parent | message      | details                           | out    |
-	| testSuiteStarted  | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |
-	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |
-	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest   | false                 |          | .+     |        |              |                                   |        |
-	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest   |                       |          | .+     |        |              |                                   | output |
-	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest   |                       | \d+      | .+     |        |              |                                   |        |
-	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |
-	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |
-	| testStarted       | Foo.Tests.UnitTests2.FailedTest       | false                 |          | .+     |        |              |                                   |        |
-	| testFailed        | Foo.Tests.UnitTests2.FailedTest       |                       |          | .+     |        | Reason       | Foo.Tests.UnitTests2.FailedTest() |        |
-	| testFinished      | Foo.Tests.UnitTests2.FailedTest       |                       | \d+      | .+     |        |              |                                   |        |
-	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |
-	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |
-	| testStarted       | Foo.Tests.UnitTests3.IgnoredTest      | false                 |          | .+     |        |              |                                   |        |
-	| testIgnored       | Foo.Tests.UnitTests3.IgnoredTest      |                       |          | .+     |        | Reason       |                                   |        |
-	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |
-	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |
-	| testStarted       | Foo.Tests.UnitTests4.InconclusiveTest | false                 |          | .+     |        |              |                                   |        |
-	| testIgnored       | Foo.Tests.UnitTests4.InconclusiveTest |                       |          | .+     |        | Inconclusive |                                   |        |
-	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |
-	| testSuiteFinished | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |
+	|                   | name                                  | captureStandardOutput | duration | flowId | parent | message      | details                           | out    | tc:tags                       |
+	| testSuiteStarted  | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |                               |
+	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |                               |
+	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest   | false                 |          | .+     |        |              |                                   |        |                               |
+	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest   |                       |          | .+     |        |              |                                   | output | tc:parseServiceMessagesInside |
+	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest   |                       | \d+      | .+     |        |              |                                   |        |                               |
+	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |                               |
+	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |                               |
+	| testStarted       | Foo.Tests.UnitTests2.FailedTest       | false                 |          | .+     |        |              |                                   |        |                               |
+	| testFailed        | Foo.Tests.UnitTests2.FailedTest       |                       |          | .+     |        | Reason       | Foo.Tests.UnitTests2.FailedTest() |        |                               |
+	| testFinished      | Foo.Tests.UnitTests2.FailedTest       |                       | \d+      | .+     |        |              |                                   |        |                               |
+	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |                               |
+	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |                               |
+	| testStarted       | Foo.Tests.UnitTests3.IgnoredTest      | false                 |          | .+     |        |              |                                   |        |                               |
+	| testIgnored       | Foo.Tests.UnitTests3.IgnoredTest      |                       |          | .+     |        | Reason       |                                   |        |                               |
+	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |                               |
+	| flowStarted       |                                       |                       |          | .+     | .+     |              |                                   |        |                               |
+	| testStarted       | Foo.Tests.UnitTests4.InconclusiveTest | false                 |          | .+     |        |              |                                   |        |                               |
+	| testIgnored       | Foo.Tests.UnitTests4.InconclusiveTest |                       |          | .+     |        | Inconclusive |                                   |        |                               |
+	| flowFinished      |                                       |                       |          | .+     |        |              |                                   |        |                               |
+	| testSuiteFinished | foo.tests.dll                         |                       |          | .+     |        |              |                                   |        |                               |
 
 Examples:
 	| configurationType | frameworkVersion | teamCityIntegration |
@@ -81,7 +81,7 @@ Examples:
 	| CmdArguments      | Version40        | EnvVariable         |
 
 @teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run it for failed setup
+Scenario Outline: NUnit sends TeamCity's service messages when I run it for failed setup
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
 	And I have added failedSetUp method as FailedSetUp to the class Foo.Tests.UnitTests1 for foo.tests	
@@ -109,7 +109,7 @@ Examples:
 	| Version40        |
 
 @teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run it for failed tear down
+Scenario Outline: NUnit sends TeamCity's service messages when I run it for failed tear down
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
 	And I have added failedTearDown method as FailedTearDown to the class Foo.Tests.UnitTests1 for foo.tests	
@@ -122,15 +122,15 @@ Scenario Outline: The NUnit sends TeamCity service messages when I run it for fa
 	When I run NUnit console
 	Then the exit code should be 1
 	And the output should contain TeamCity service messages:
-	|                   | name                                | captureStandardOutput | duration | flowId | parent | message          | details                               | out    |
-	| testSuiteStarted  | foo.tests.dll                       |                       |          | .+     |        |                  |                                       |        |
-	| flowStarted       |                                     |                       |          | .+     | .+     |                  |                                       |        |
-	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |                  |                                       |        |
-	| testFailed        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        | System.Exception | Foo.Tests.UnitTests1.FailedTearDown() |        |
-	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        |                  |                                       | output |
-	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |                  |                                       |        |
-	| flowFinished      |                                     |                       |          | .+     |        |                  |                                       |        |
-	| testSuiteFinished | foo.tests.dll                       |                       |          | .+     |        |                  |                                       |        |
+	|                   | name                                | captureStandardOutput | duration | flowId | parent | message          | details                               | out    | tc:tags                       |
+	| testSuiteStarted  | foo.tests.dll                       |                       |          | .+     |        |                  |                                       |        |                               |
+	| flowStarted       |                                     |                       |          | .+     | .+     |                  |                                       |        |                               |
+	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |                  |                                       |        |                               |
+	| testFailed        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        | System.Exception | Foo.Tests.UnitTests1.FailedTearDown() |        |                               |
+	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        |                  |                                       | output | tc:parseServiceMessagesInside |
+	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |                  |                                       |        |                               |
+	| flowFinished      |                                     |                       |          | .+     |        |                  |                                       |        |                               |
+	| testSuiteFinished | foo.tests.dll                       |                       |          | .+     |        |                  |                                       |        |                               |
 
 Examples:
 	| frameworkVersion |
@@ -138,7 +138,7 @@ Examples:
 	| Version40        |
 
 @teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run it for parallelizable tests
+Scenario Outline: NUnit sends TeamCity's service messages when I run it for parallelizable tests
 	Given Framework version is <frameworkVersion>	        
 	And I have added SuccessfulParallelizable method as SuccessfulParallelizable1 to the class Foo.Tests.UnitTests1 for foo1.tests	
 	And I have added SuccessfulParallelizable method as SuccessfulParallelizable2 to the class Foo.Tests.UnitTests1 for foo1.tests	
@@ -177,7 +177,7 @@ Examples:
 	| Version40        |
 	
 @teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run successful tests with the same names in the several assemblies
+Scenario Outline: NUnit sends TeamCity's service messages when I run successful tests with the same names in the several assemblies
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo1.tests
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo2.tests
@@ -195,21 +195,21 @@ Scenario Outline: The NUnit sends TeamCity service messages when I run successfu
 	When I run NUnit console
 	Then the exit code should be 0
 	And the output should contain TeamCity service messages:
-	|                   | name                                | captureStandardOutput | duration | flowId | parent | message | details | out    |
-	| testSuiteStarted  | foo1.tests.dll                      |                       |          | .+     |        |         |         |        |
-	| flowStarted       |                                     |                       |          | .+     | .+     |         |         |        |
-	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |         |         |        |
-	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        |         |         | output |
-	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |         |         |        |
-	| flowFinished      |                                     |                       |          | .+     |        |         |         |        |
-	| testSuiteFinished | foo1.tests.dll                      |                       |          | .+     |        |         |         |        |
-	| testSuiteStarted  | foo2.tests.dll                      |                       |          | .+     |        |         |         |        |
-	| flowStarted       |                                     |                       |          | .+     | .+     |         |         |        |
-	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |         |         |        |
-	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        |         |         | output |
-	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |         |         |        |
-	| flowFinished      |                                     |                       |          | .+     |        |         |         |        |
-	| testSuiteFinished | foo2.tests.dll                      |                       |          | .+     |        |         |         |        |
+	|                   | name                                | captureStandardOutput | duration | flowId | parent | message | details | out    | tc:tags                       |
+	| testSuiteStarted  | foo1.tests.dll                      |                       |          | .+     |        |         |         |        |                               |
+	| flowStarted       |                                     |                       |          | .+     | .+     |         |         |        |                               |
+	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |         |         |        |                               |
+	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        |         |         | output | tc:parseServiceMessagesInside |
+	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |         |         |        |                               |
+	| flowFinished      |                                     |                       |          | .+     |        |         |         |        |                               |
+	| testSuiteFinished | foo1.tests.dll                      |                       |          | .+     |        |         |         |        |                               |
+	| testSuiteStarted  | foo2.tests.dll                      |                       |          | .+     |        |         |         |        |                               |
+	| flowStarted       |                                     |                       |          | .+     | .+     |         |         |        |                               |
+	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |         |         |        |                               |
+	| testStdOut        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        |         |         | output |                               |
+	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |         |         |        |                               |
+	| flowFinished      |                                     |                       |          | .+     |        |         |         |        |                               |
+	| testSuiteFinished | foo2.tests.dll                      |                       |          | .+     |        |         |         |        |                               |
 
 Examples:
 	| frameworkVersion |
@@ -217,7 +217,7 @@ Examples:
 	| Version40        |
 
 	@teamcity
-Scenario Outline: The NUnit sends TeamCity service messages when I run many test
+Scenario Outline: NUnit sends TeamCity's service messages when I run many test
 	Given Framework version is <frameworkVersion>	
 	And I have added 1000 successful methods as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests1
 	And I have added 1000 successful methods as SuccessfulTest to the class Foo.Tests.UnitTests2 for foo.tests2

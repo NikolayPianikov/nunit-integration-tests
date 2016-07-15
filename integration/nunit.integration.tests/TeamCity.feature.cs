@@ -72,11 +72,11 @@ namespace nunit.integration.tests
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit sends TeamCity service messages when I run successful test for NUnit3")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run successful test for NUnit3")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void TheNUnitSendsTeamCityServiceMessagesWhenIRunSuccessfulTestForNUnit3(string frameworkVersion, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunSuccessfulTestForNUnit3(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -84,7 +84,7 @@ namespace nunit.integration.tests
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit sends TeamCity service messages when I run successful test for NUnit3", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run successful test for NUnit3", @__tags);
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -120,13 +120,15 @@ this.FeatureBackground();
                         "parent",
                         "message",
                         "details",
-                        "out"});
+                        "out",
+                        "tc:tags"});
             table1.AddRow(new string[] {
                         "testSuiteStarted",
                         "foo.tests.dll",
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -140,6 +142,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table1.AddRow(new string[] {
                         "testStarted",
@@ -147,6 +150,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -160,13 +164,15 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
-                        "output"});
+                        "output",
+                        "tc:parseServiceMessagesInside"});
             table1.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
                         "\\d+",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -180,6 +186,7 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
+                        "",
                         ""});
             table1.AddRow(new string[] {
                         "testSuiteFinished",
@@ -187,6 +194,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -198,8 +206,8 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit sends TeamCity service messages when I run it for different types of te" +
-            "sts")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run it for different types of test" +
+            "s")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("ProjectFile", "Version45", "CmdArguments", new string[0])]
         [NUnit.Framework.TestCaseAttribute("ProjectFile", "Version40", "CmdArguments", new string[0])]
@@ -209,7 +217,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("ProjectFile", "Version40", "EnvVariable", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CmdArguments", "Version45", "EnvVariable", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CmdArguments", "Version40", "EnvVariable", new string[0])]
-        public virtual void TheNUnitSendsTeamCityServiceMessagesWhenIRunItForDifferentTypesOfTests(string configurationType, string frameworkVersion, string teamCityIntegration, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunItForDifferentTypesOfTests(string configurationType, string frameworkVersion, string teamCityIntegration, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -217,8 +225,8 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit sends TeamCity service messages when I run it for different types of te" +
-                    "sts", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for different types of test" +
+                    "s", @__tags);
 #line 34
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -265,13 +273,15 @@ this.FeatureBackground();
                         "parent",
                         "message",
                         "details",
-                        "out"});
+                        "out",
+                        "tc:tags"});
             table2.AddRow(new string[] {
                         "testSuiteStarted",
                         "foo.tests.dll",
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -285,6 +295,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "testStarted",
@@ -292,6 +303,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -305,13 +317,15 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
-                        "output"});
+                        "output",
+                        "tc:parseServiceMessagesInside"});
             table2.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
                         "\\d+",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -325,6 +339,7 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "flowStarted",
@@ -335,6 +350,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "testStarted",
@@ -342,6 +358,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -355,6 +372,7 @@ this.FeatureBackground();
                         "",
                         "Reason",
                         "Foo.Tests.UnitTests2.FailedTest()",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "testFinished",
@@ -362,6 +380,7 @@ this.FeatureBackground();
                         "",
                         "\\d+",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -375,6 +394,7 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "flowStarted",
@@ -385,6 +405,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "testStarted",
@@ -392,6 +413,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -405,6 +427,7 @@ this.FeatureBackground();
                         "",
                         "Reason",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "flowFinished",
@@ -412,6 +435,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -425,6 +449,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "testStarted",
@@ -432,6 +457,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -445,6 +471,7 @@ this.FeatureBackground();
                         "",
                         "Inconclusive",
                         "",
+                        "",
                         ""});
             table2.AddRow(new string[] {
                         "flowFinished",
@@ -452,6 +479,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -465,6 +493,7 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
+                        "",
                         ""});
 #line 49
  testRunner.And("the output should contain TeamCity service messages:", ((string)(null)), table2, "And ");
@@ -473,11 +502,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit sends TeamCity service messages when I run it for failed setup")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run it for failed setup")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void TheNUnitSendsTeamCityServiceMessagesWhenIRunItForFailedSetup(string frameworkVersion, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunItForFailedSetup(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -485,7 +514,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit sends TeamCity service messages when I run it for failed setup", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for failed setup", @__tags);
 #line 84
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -602,11 +631,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit sends TeamCity service messages when I run it for failed tear down")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run it for failed tear down")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void TheNUnitSendsTeamCityServiceMessagesWhenIRunItForFailedTearDown(string frameworkVersion, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunItForFailedTearDown(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -614,7 +643,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit sends TeamCity service messages when I run it for failed tear down", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for failed tear down", @__tags);
 #line 112
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -653,13 +682,15 @@ this.FeatureBackground();
                         "parent",
                         "message",
                         "details",
-                        "out"});
+                        "out",
+                        "tc:tags"});
             table4.AddRow(new string[] {
                         "testSuiteStarted",
                         "foo.tests.dll",
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -673,6 +704,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table4.AddRow(new string[] {
                         "testStarted",
@@ -680,6 +712,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -693,6 +726,7 @@ this.FeatureBackground();
                         "",
                         "System.Exception",
                         "Foo.Tests.UnitTests1.FailedTearDown()",
+                        "",
                         ""});
             table4.AddRow(new string[] {
                         "testStdOut",
@@ -703,13 +737,15 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
-                        "output"});
+                        "output",
+                        "tc:parseServiceMessagesInside"});
             table4.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
                         "\\d+",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -723,6 +759,7 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
+                        "",
                         ""});
             table4.AddRow(new string[] {
                         "testSuiteFinished",
@@ -730,6 +767,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -741,11 +779,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit sends TeamCity service messages when I run it for parallelizable tests")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run it for parallelizable tests")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void TheNUnitSendsTeamCityServiceMessagesWhenIRunItForParallelizableTests(string frameworkVersion, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunItForParallelizableTests(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -753,7 +791,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit sends TeamCity service messages when I run it for parallelizable tests", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for parallelizable tests", @__tags);
 #line 141
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -842,12 +880,12 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit sends TeamCity service messages when I run successful tests with the sa" +
-            "me names in the several assemblies")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run successful tests with the same" +
+            " names in the several assemblies")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void TheNUnitSendsTeamCityServiceMessagesWhenIRunSuccessfulTestsWithTheSameNamesInTheSeveralAssemblies(string frameworkVersion, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunSuccessfulTestsWithTheSameNamesInTheSeveralAssemblies(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -855,8 +893,8 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit sends TeamCity service messages when I run successful tests with the sa" +
-                    "me names in the several assemblies", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run successful tests with the same" +
+                    " names in the several assemblies", @__tags);
 #line 180
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -905,13 +943,15 @@ this.FeatureBackground();
                         "parent",
                         "message",
                         "details",
-                        "out"});
+                        "out",
+                        "tc:tags"});
             table6.AddRow(new string[] {
                         "testSuiteStarted",
                         "foo1.tests.dll",
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -925,6 +965,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table6.AddRow(new string[] {
                         "testStarted",
@@ -932,6 +973,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -945,13 +987,15 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
-                        "output"});
+                        "output",
+                        "tc:parseServiceMessagesInside"});
             table6.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
                         "\\d+",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -962,6 +1006,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -975,6 +1020,7 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
+                        "",
                         ""});
             table6.AddRow(new string[] {
                         "testSuiteStarted",
@@ -982,6 +1028,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -995,6 +1042,7 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
+                        "",
                         ""});
             table6.AddRow(new string[] {
                         "testStarted",
@@ -1002,6 +1050,7 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -1015,13 +1064,15 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
-                        "output"});
+                        "output",
+                        ""});
             table6.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
                         "\\d+",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -1035,6 +1086,7 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
+                        "",
                         ""});
             table6.AddRow(new string[] {
                         "testSuiteFinished",
@@ -1042,6 +1094,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ".+",
+                        "",
                         "",
                         "",
                         "",
@@ -1053,11 +1106,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("The NUnit sends TeamCity service messages when I run many test")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run many test")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void TheNUnitSendsTeamCityServiceMessagesWhenIRunManyTest(string frameworkVersion, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunManyTest(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -1065,7 +1118,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The NUnit sends TeamCity service messages when I run many test", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run many test", @__tags);
 #line 220
 this.ScenarioSetup(scenarioInfo);
 #line 3

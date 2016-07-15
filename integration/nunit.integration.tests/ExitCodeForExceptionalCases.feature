@@ -4,7 +4,7 @@ Background:
 	Given NUnit path is ..\nunit\
 	
 @teamcity
-Scenario Outline: The NUnit returns negative exit -2 code when I run it without any assemblies
+Scenario Outline: NUnit returns negative exit -2 code when I run it without any assemblies
 	Given Framework version is <frameworkVersion>	
 	And I have added the assembly mocks\notInTheDir.dll to the list of testing assemblies
 	And I have added the arg Process=<process> to NUnit console command line
@@ -21,7 +21,7 @@ Examples:
 	| Version40        | Multiple  |
 
 @teamcity
-Scenario Outline: The NUnit returns negative exit -2 code when I run it without nunit.framework.dll
+Scenario Outline: NUnit returns negative exit -2 code when I run it without nunit.framework.dll
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests
 	And I have created the folder mocks
@@ -42,7 +42,7 @@ Examples:
 	| Version40        | Multiple  |
 	
 @teamcity
-Scenario Outline: The NUnit returns negative exit code when the some part of NUnit console is not exist
+Scenario Outline: NUnit returns negative exit code when the some part of NUnit console is not exist
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests
 	And I have created the folder mocks
@@ -70,7 +70,7 @@ Examples:
 	| Version40        | nunit-agent.exe      |	
 	
 @teamcity
-Scenario Outline: The NUnit returns exit code -100 when the test throws StackOverflow exception
+Scenario Outline: NUnit returns exit code -100 when the test throws StackOverflow exception
 	Given Framework version is <frameworkVersion>	
 	And I have added failedStackOverflow method as FailedStackOverflow to the class Foo.Tests.UnitTests1 for foo.tests	
 	And I have created the folder mocks
@@ -93,7 +93,7 @@ Examples:
 	| Version40        | Multiple  |
 
 @teamcity
-Scenario Outline: The NUnit returns positive exit code when the test throws OutOfMemory exception
+Scenario Outline: NUnit returns positive exit code when the test throws OutOfMemory exception
 	Given Framework version is <frameworkVersion>	
 	And I have added failedOutOfMemory method as FailedOutOfMemory to the class Foo.Tests.UnitTests1 for foo.tests	
 	And I have created the folder mocks
