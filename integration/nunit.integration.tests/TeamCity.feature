@@ -109,6 +109,35 @@ Examples:
 	| Version40        |
 
 @teamcity
+Scenario Outline: NUnit sends TeamCity's service messages when I run it for failed one time setup
+	Given Framework version is <frameworkVersion>	
+	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	
+	And I have added failedSetUp method as FailedOneTimeSetUp to the class Foo.Tests.UnitTests1 for foo.tests	
+	And I have created the folder mocks
+	And I have added NUnit framework references to foo.tests
+	And I have copied NUnit framework references to folder mocks
+	And I have compiled the assembly foo.tests to file mocks\foo.tests.dll	
+	And I have added the assembly mocks\foo.tests.dll to the list of testing assemblies
+	And I want to use CmdArguments type of TeamCity integration
+	When I run NUnit console
+	Then the exit code should be 1
+	And the output should contain TeamCity service messages:
+	|                   | name                                | captureStandardOutput | duration | flowId | parent | message          | details                            | out |
+	| testSuiteStarted  | foo.tests.dll                       |                       |          | .+     |        |                  |                                    |     |
+	| flowStarted       |                                     |                       |          | .+     | .+     |                  |                                    |     |
+	| testStarted       | Foo.Tests.UnitTests1.SuccessfulTest | false                 |          | .+     |        |                  |                                    |     |
+	| testFailed        | Foo.Tests.UnitTests1.SuccessfulTest |                       |          | .+     |        | System.Exception | Foo.Tests.UnitTests1.FailedOneTimeSetUp() |     |
+	| testFinished      | Foo.Tests.UnitTests1.SuccessfulTest |                       | \d+      | .+     |        |                  |                                    |     |
+	| flowFinished      |                                     |                       |          | .+     |        |                  |                                    |     |
+	| testSuiteFinished | foo.tests.dll                       |                       |          | .+     |        |                  |                                    |     |
+
+Examples:
+	| frameworkVersion |
+	| Version45        |
+	| Version40        |
+
+
+@teamcity
 Scenario Outline: NUnit sends TeamCity's service messages when I run it for failed tear down
 	Given Framework version is <frameworkVersion>	
 	And I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests1 for foo.tests	

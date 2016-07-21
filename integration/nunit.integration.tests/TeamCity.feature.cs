@@ -631,11 +631,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run it for failed tear down")]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run it for failed one time setup")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
-        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunItForFailedTearDown(string frameworkVersion, string[] exampleTags)
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunItForFailedOneTimeSetup(string frameworkVersion, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "teamcity"};
@@ -643,7 +643,7 @@ this.FeatureBackground();
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for failed tear down", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for failed one time setup", @__tags);
 #line 112
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -654,8 +654,8 @@ this.FeatureBackground();
  testRunner.And("I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests" +
                     "1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 115
- testRunner.And("I have added failedTearDown method as FailedTearDown to the class Foo.Tests.UnitT" +
-                    "ests1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have added failedSetUp method as FailedOneTimeSetUp to the class Foo.Tests.Unit" +
+                    "Tests1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 116
  testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 117
@@ -682,15 +682,13 @@ this.FeatureBackground();
                         "parent",
                         "message",
                         "details",
-                        "out",
-                        "tc:tags"});
+                        "out"});
             table4.AddRow(new string[] {
                         "testSuiteStarted",
                         "foo.tests.dll",
                         "",
                         "",
                         ".+",
-                        "",
                         "",
                         "",
                         "",
@@ -704,7 +702,6 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "",
-                        "",
                         ""});
             table4.AddRow(new string[] {
                         "testStarted",
@@ -712,7 +709,6 @@ this.FeatureBackground();
                         "false",
                         "",
                         ".+",
-                        "",
                         "",
                         "",
                         "",
@@ -725,27 +721,14 @@ this.FeatureBackground();
                         ".+",
                         "",
                         "System.Exception",
-                        "Foo.Tests.UnitTests1.FailedTearDown()",
-                        "",
+                        "Foo.Tests.UnitTests1.FailedOneTimeSetUp()",
                         ""});
-            table4.AddRow(new string[] {
-                        "testStdOut",
-                        "Foo.Tests.UnitTests1.SuccessfulTest",
-                        "",
-                        "",
-                        ".+",
-                        "",
-                        "",
-                        "",
-                        "output",
-                        "tc:parseServiceMessagesInside"});
             table4.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
                         "\\d+",
                         ".+",
-                        "",
                         "",
                         "",
                         "",
@@ -759,7 +742,6 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
-                        "",
                         ""});
             table4.AddRow(new string[] {
                         "testSuiteFinished",
@@ -770,10 +752,157 @@ this.FeatureBackground();
                         "",
                         "",
                         "",
-                        "",
                         ""});
 #line 124
  testRunner.And("the output should contain TeamCity service messages:", ((string)(null)), table4, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("NUnit sends TeamCity\'s service messages when I run it for failed tear down")]
+        [NUnit.Framework.CategoryAttribute("teamcity")]
+        [NUnit.Framework.TestCaseAttribute("Version45", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Version40", new string[0])]
+        public virtual void NUnitSendsTeamCitySServiceMessagesWhenIRunItForFailedTearDown(string frameworkVersion, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "teamcity"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for failed tear down", @__tags);
+#line 141
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line 142
+ testRunner.Given(string.Format("Framework version is {0}", frameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 143
+ testRunner.And("I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests" +
+                    "1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 144
+ testRunner.And("I have added failedTearDown method as FailedTearDown to the class Foo.Tests.UnitT" +
+                    "ests1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 145
+ testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 146
+ testRunner.And("I have added NUnit framework references to foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 147
+ testRunner.And("I have copied NUnit framework references to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 148
+ testRunner.And("I have compiled the assembly foo.tests to file mocks\\foo.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 149
+ testRunner.And("I have added the assembly mocks\\foo.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 150
+ testRunner.And("I want to use CmdArguments type of TeamCity integration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 151
+ testRunner.When("I run NUnit console", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 152
+ testRunner.Then("the exit code should be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "",
+                        "name",
+                        "captureStandardOutput",
+                        "duration",
+                        "flowId",
+                        "parent",
+                        "message",
+                        "details",
+                        "out",
+                        "tc:tags"});
+            table5.AddRow(new string[] {
+                        "testSuiteStarted",
+                        "foo.tests.dll",
+                        "",
+                        "",
+                        ".+",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "flowStarted",
+                        "",
+                        "",
+                        "",
+                        ".+",
+                        ".+",
+                        "",
+                        "",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "testStarted",
+                        "Foo.Tests.UnitTests1.SuccessfulTest",
+                        "false",
+                        "",
+                        ".+",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "testFailed",
+                        "Foo.Tests.UnitTests1.SuccessfulTest",
+                        "",
+                        "",
+                        ".+",
+                        "",
+                        "System.Exception",
+                        "Foo.Tests.UnitTests1.FailedTearDown()",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "testStdOut",
+                        "Foo.Tests.UnitTests1.SuccessfulTest",
+                        "",
+                        "",
+                        ".+",
+                        "",
+                        "",
+                        "",
+                        "output",
+                        "tc:parseServiceMessagesInside"});
+            table5.AddRow(new string[] {
+                        "testFinished",
+                        "Foo.Tests.UnitTests1.SuccessfulTest",
+                        "",
+                        "\\d+",
+                        ".+",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "flowFinished",
+                        "",
+                        "",
+                        "",
+                        ".+",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "testSuiteFinished",
+                        "foo.tests.dll",
+                        "",
+                        "",
+                        ".+",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""});
+#line 153
+ testRunner.And("the output should contain TeamCity service messages:", ((string)(null)), table5, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -792,89 +921,89 @@ this.FeatureBackground();
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run it for parallelizable tests", @__tags);
-#line 141
+#line 170
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 142
+#line 171
  testRunner.Given(string.Format("Framework version is {0}", frameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 143
+#line 172
  testRunner.And("I have added SuccessfulParallelizable method as SuccessfulParallelizable1 to the " +
                     "class Foo.Tests.UnitTests1 for foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 144
+#line 173
  testRunner.And("I have added SuccessfulParallelizable method as SuccessfulParallelizable2 to the " +
                     "class Foo.Tests.UnitTests1 for foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 145
+#line 174
  testRunner.And("I have added SuccessfulParallelizable method as SuccessfulParallelizable3 to the " +
                     "class Foo.Tests.UnitTests1 for foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 146
+#line 175
  testRunner.And("I have added attribute [assembly: NUnit.Framework.Parallelizable] to the assembly" +
                     " foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 147
+#line 176
  testRunner.And("I have added attribute [NUnit.Framework.Parallelizable] to the class Foo.Tests.Un" +
                     "itTests1 for foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 148
+#line 177
  testRunner.And("I have added NUnit framework references to foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 149
+#line 178
  testRunner.And("I have added SuccessfulParallelizable method as SuccessfulParallelizable4 to the " +
                     "class Foo.Tests.UnitTests1 for foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 150
+#line 179
  testRunner.And("I have added SuccessfulParallelizable method as SuccessfulParallelizable5 to the " +
                     "class Foo.Tests.UnitTests1 for foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 151
+#line 180
  testRunner.And("I have added SuccessfulParallelizable method as SuccessfulParallelizable6 to the " +
                     "class Foo.Tests.UnitTests1 for foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 152
+#line 181
  testRunner.And("I have added attribute [assembly: NUnit.Framework.Parallelizable] to the assembly" +
                     " foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 153
+#line 182
  testRunner.And("I have added attribute [NUnit.Framework.Parallelizable] to the class Foo.Tests.Un" +
                     "itTests1 for foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 154
+#line 183
  testRunner.And("I have added NUnit framework references to foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 155
+#line 184
  testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 156
+#line 185
  testRunner.And("I have copied NUnit framework references to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 157
+#line 186
  testRunner.And("I have compiled the assembly foo1.tests to file mocks\\foo1.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 158
+#line 187
  testRunner.And("I have compiled the assembly foo2.tests to file mocks\\foo2.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 159
+#line 188
  testRunner.And("I have added the assembly mocks\\foo1.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 160
+#line 189
  testRunner.And("I have added the assembly mocks\\foo2.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 161
+#line 190
  testRunner.And("I want to use CmdArguments type of TeamCity integration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 162
+#line 191
  testRunner.And("I have added the arg workers=10 to NUnit console command line", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 163
+#line 192
  testRunner.And("I have added the arg agents=10 to NUnit console command line", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 164
+#line 193
  testRunner.When("I run NUnit console", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 165
+#line 194
  testRunner.Then("the exit code should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "field",
                         "value"});
-            table5.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Test Count",
                         "6"});
-            table5.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Passed",
                         "6"});
-            table5.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Failed",
                         "0"});
-            table5.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Inconclusive",
                         "0"});
-            table5.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "Skipped",
                         "0"});
-#line 166
- testRunner.And("the Test Run Summary should has following:", ((string)(null)), table5, "And ");
+#line 195
+ testRunner.And("the Test Run Summary should has following:", ((string)(null)), table6, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -895,46 +1024,46 @@ this.FeatureBackground();
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run successful tests with the same" +
                     " names in the several assemblies", @__tags);
-#line 180
+#line 209
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 181
+#line 210
  testRunner.Given(string.Format("Framework version is {0}", frameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 182
+#line 211
  testRunner.And("I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests" +
                     "1 for foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 183
+#line 212
  testRunner.And("I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests" +
                     "1 for foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 184
+#line 213
  testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 185
+#line 214
  testRunner.And("I have added NUnit framework references to foo1.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 186
+#line 215
  testRunner.And("I have added NUnit framework references to foo2.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 187
+#line 216
  testRunner.And("I have copied NUnit framework references to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 188
+#line 217
  testRunner.And("I have compiled the assembly foo1.tests to file mocks\\foo1.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 189
+#line 218
  testRunner.And("I have compiled the assembly foo2.tests to file mocks\\foo2.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 190
+#line 219
  testRunner.And("I have added the assembly mocks\\foo1.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 191
+#line 220
  testRunner.And("I have added the assembly mocks\\foo2.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 192
+#line 221
  testRunner.And("I have added the arg workers=1 to NUnit console command line", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 193
+#line 222
  testRunner.And("I have added the arg agents=1 to NUnit console command line", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 194
+#line 223
  testRunner.And("I want to use CmdArguments type of TeamCity integration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 195
+#line 224
  testRunner.When("I run NUnit console", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 196
+#line 225
  testRunner.Then("the exit code should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         "name",
                         "captureStandardOutput",
@@ -945,7 +1074,7 @@ this.FeatureBackground();
                         "details",
                         "out",
                         "tc:tags"});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testSuiteStarted",
                         "foo1.tests.dll",
                         "",
@@ -956,7 +1085,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "flowStarted",
                         "",
                         "",
@@ -967,7 +1096,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testStarted",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "false",
@@ -978,7 +1107,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testStdOut",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
@@ -989,7 +1118,7 @@ this.FeatureBackground();
                         "",
                         "output",
                         "tc:parseServiceMessagesInside"});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
@@ -1000,7 +1129,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "flowFinished",
                         "",
                         "",
@@ -1011,7 +1140,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testSuiteFinished",
                         "foo1.tests.dll",
                         "",
@@ -1022,7 +1151,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testSuiteStarted",
                         "foo2.tests.dll",
                         "",
@@ -1033,7 +1162,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "flowStarted",
                         "",
                         "",
@@ -1044,7 +1173,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testStarted",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "false",
@@ -1055,7 +1184,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testStdOut",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
@@ -1066,7 +1195,7 @@ this.FeatureBackground();
                         "",
                         "output",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testFinished",
                         "Foo.Tests.UnitTests1.SuccessfulTest",
                         "",
@@ -1077,7 +1206,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "flowFinished",
                         "",
                         "",
@@ -1088,7 +1217,7 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-            table6.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "testSuiteFinished",
                         "foo2.tests.dll",
                         "",
@@ -1099,8 +1228,8 @@ this.FeatureBackground();
                         "",
                         "",
                         ""});
-#line 197
- testRunner.And("the output should contain TeamCity service messages:", ((string)(null)), table6, "And ");
+#line 226
+ testRunner.And("the output should contain TeamCity service messages:", ((string)(null)), table7, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1119,39 +1248,39 @@ this.FeatureBackground();
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit sends TeamCity\'s service messages when I run many test", @__tags);
-#line 220
+#line 249
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 221
+#line 250
  testRunner.Given(string.Format("Framework version is {0}", frameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 222
+#line 251
  testRunner.And("I have added 1000 successful methods as SuccessfulTest to the class Foo.Tests.Uni" +
                     "tTests1 for foo.tests1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 223
+#line 252
  testRunner.And("I have added 1000 successful methods as SuccessfulTest to the class Foo.Tests.Uni" +
                     "tTests2 for foo.tests2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 224
+#line 253
  testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 225
+#line 254
  testRunner.And("I have added NUnit framework references to foo.tests1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 226
+#line 255
  testRunner.And("I have added NUnit framework references to foo.tests2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 227
+#line 256
  testRunner.And("I have copied NUnit framework references to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 228
+#line 257
  testRunner.And("I have compiled the assembly foo.tests1 to file mocks\\foo.tests1.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 229
+#line 258
  testRunner.And("I have compiled the assembly foo.tests2 to file mocks\\foo.tests2.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 230
+#line 259
  testRunner.And("I have added the assembly mocks\\foo.tests1.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 231
+#line 260
  testRunner.And("I have added the assembly mocks\\foo.tests2.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 232
+#line 261
  testRunner.And("I want to use CmdArguments type of TeamCity integration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 233
+#line 262
  testRunner.When("I run NUnit console", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 234
+#line 263
  testRunner.Then("the exit code should be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

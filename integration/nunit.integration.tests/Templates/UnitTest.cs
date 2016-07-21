@@ -12,10 +12,16 @@
     internal class UnitTest
     {
         [SetUp]
-        public void FailedSetup()
+        public void FailedSeTup()
         {
             throw new System.Exception("Exception during setup");
         }
+
+        [OneTimeSetUp]
+        public void FailedOneTimeSetUp()
+        {
+            throw new System.Exception("Exception during one time setup");
+        }        
 
         [TearDown]
         public void FailedTearDown()
