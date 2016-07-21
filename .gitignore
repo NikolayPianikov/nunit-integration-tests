@@ -1,3 +1,5 @@
-bin/
+**/obj/
+**/bin/
 packages/
-integration/nunit.integration.tests/obj/
+.vs/
+*.lock.json
