@@ -12,7 +12,7 @@
         public TestContext()
         {
             AssemblyDirectory = Path.GetDirectoryName(new Uri(typeof(NUnitSteps).Assembly.CodeBase).LocalPath);
-            SandboxPath = Path.Combine(AssemblyDirectory, GetSandboxPath());
+            SandboxPath = !string.IsNullOrWhiteSpace(AssemblyDirectory) ? Path.Combine(AssemblyDirectory, GetSandboxPath()) : GetSandboxPath();
             CurrentDirectory = SandboxPath;            
         }
 
@@ -45,13 +45,17 @@
         private static string GetSandboxPath()
         {
             return NUnit.Framework.TestContext.CurrentContext.Test.Name?
-                .Replace("(", "_")
-                .Replace("\"", string.Empty)
-                .Replace(",null", string.Empty)
-                .Replace(",", "_")
-                .Replace("]", string.Empty)
-                .Replace("[", string.Empty)
-                .Replace(")", string.Empty) ?? string.Empty;
+                .GetHashCode().ToString();
+
+            //return NUnit.Framework.TestContext.CurrentContext.Test.Name?
+            //    .Replace("(", string.Empty)
+            //    .Replace("\"", string.Empty)
+            //    .Replace(",null", string.Empty)
+            //    .Replace(",", string.Empty)
+            //    .Replace("]", string.Empty)
+            //    .Replace("[", string.Empty)
+            //    .Replace("System.String", string.Empty)
+            //    .Replace(")", string.Empty) ?? string.Empty;
         }
     }
 }

@@ -3,13 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     using Microsoft.Build.Utilities;
 
     internal class EnvironmentManager
     {
-        private static readonly string[] NUnitFiles = { Const.NUnitConsoleFileName, Const.NUnitConsoleFileName + ".config", "nunit.engine.api.dll", "nunit.engine.dll", "Mono.Cecil.dll", "NUnit.System.Linq.dll", "nunit-agent.exe", "nunit-agent.exe.config", "nunit-agent-x86.exe", "nunit-agent-x86.exe.config", "nunit.engine.addins", "addins" };
-
         public void CopyNUnitFrameworkAssemblies(string directoryName, string originNUnitPath, TargetDotNetFrameworkVersion frameworkVersion)
         {
             foreach (var assemblyPath in EnumerateNUnitAssemblies(originNUnitPath, frameworkVersion))
@@ -37,15 +36,64 @@
 
         public IEnumerable<string> EnumerateNUnitAssemblies(string nunitBasePath, TargetDotNetFrameworkVersion frameworkVersion)
         {
-            var nunitFrameworkPath = Path.Combine(nunitBasePath, PathUtilities.GetNUnitAssembliesPath(frameworkVersion));
-            yield return Path.Combine(nunitFrameworkPath, "nunit.framework.dll");
-            yield return Path.Combine(nunitBasePath, "NUnit.System.Linq.dll");
+            yield return GetNUnitFrameworkPath(nunitBasePath, frameworkVersion, "nunit.framework.dll");
+            var file = GetNUnitFrameworkPath(nunitBasePath, frameworkVersion, "NUnit.System.Linq.dll");
+            if (file != null)
+            {
+                yield return file;
+            }
         }
 
         public IEnumerable<string> EnumerateNUnitReferences(string nunitBasePath, TargetDotNetFrameworkVersion frameworkVersion)
         {
-            var nunitFrameworkPath = Path.Combine(nunitBasePath, PathUtilities.GetNUnitAssembliesPath(frameworkVersion));
-            yield return Path.Combine(nunitFrameworkPath, "nunit.framework.dll");            
+            yield return GetNUnitFrameworkPath(nunitBasePath, frameworkVersion, "nunit.framework.dll");
+        }
+
+        private string GetNUnitFrameworkPath(string nunitBasePath, TargetDotNetFrameworkVersion frameworkVersion, string fileName)
+        {
+            string pathPattern;
+            switch (frameworkVersion)
+            {
+                case TargetDotNetFrameworkVersion.Version45:
+                    pathPattern = "net*4*5";
+                    break;
+
+                case TargetDotNetFrameworkVersion.Version40:
+                    pathPattern = "net*4*0";
+                    break;
+
+                case TargetDotNetFrameworkVersion.Version20:
+                    pathPattern = "net*2*0";
+                    break;
+
+                default:
+                    throw new NotSupportedException(frameworkVersion.ToString());
+            }
+
+            return FindFolder(nunitBasePath, pathPattern, fileName);            
+        }
+
+        private string FindFolder(string pathToFind, string searchPattern, string fileName)
+        {
+            foreach (var dir in Directory.GetDirectories(pathToFind, searchPattern))
+            {
+                var files = Directory.GetFiles(dir, fileName);
+                if (files.Length > 0)
+                {
+                    return files[0];
+                }                
+            }
+
+            foreach (var dir in Directory.GetDirectories(pathToFind))
+            {
+                var file = FindFolder(dir, searchPattern, fileName);
+                if (file != null)
+                {
+                    return file;
+                }
+            }
+
+            return null;
         }
 
         public void CreateDirectory(string directoryName)
@@ -57,7 +105,7 @@
 
             if (Directory.Exists(directoryName))
             {
-                Directory.Delete(directoryName, true);                
+                Directory.Delete(directoryName, true);
             }
 
             Directory.CreateDirectory(directoryName);
@@ -66,23 +114,8 @@
         public string PrepareNUnitClonsoleAndGetPath(string sandboxPath, string nunitPath)
         {
             var nunitBasePath = Path.GetFullPath(Path.Combine(sandboxPath, "nunit"));
-            CreateDirectory(nunitBasePath);
-            foreach (var nunitFile in NUnitFiles)
-            {
-                var src = Path.Combine(nunitPath, nunitFile);
-                var dts = Path.Combine(nunitBasePath, nunitFile);
-                if (File.Exists(src))
-                {
-                    File.Copy(src, dts, true);                
-                }
-
-                if (Directory.Exists(src))
-                {
-                    DeepCopy(new DirectoryInfo(src), new DirectoryInfo(dts));                    
-                }                
-            }
-
-            return nunitBasePath;
+            JunctionPoint.Create(nunitBasePath, nunitPath, true);
+            return GetConsolePath(nunitBasePath);
         }
        
         public void RemoveFileOrDirectoryFromNUnitDirectory(string fileToRemove, string nunitConsolePath)
@@ -99,24 +132,15 @@
             }
         }
 
-        private static void DeepCopy(DirectoryInfo source, DirectoryInfo target)
+        private string GetConsolePath(string pathToFind)
         {
-            if (!target.Exists)
+            var files = Directory.GetFiles(pathToFind, "nunit3-console.exe");
+            if (files.Any())
             {
-                target.Create();                
+                return pathToFind;
             }
 
-            foreach (var dir in source.GetDirectories())
-            {
-                var subDir = target.CreateSubdirectory(dir.Name);
-                DeepCopy(dir, subDir);
-            }
-
-            foreach (var file in source.GetFiles())
-            {
-                file.CopyTo(Path.Combine(target.FullName, file.Name));
-            }            
+            return Directory.GetDirectories(pathToFind).Select(GetConsolePath).FirstOrDefault(path => path != null);
         }
-
     }
 }

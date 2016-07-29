@@ -194,11 +194,11 @@
     <Compile Include="Dsl\DataType.cs" />
     <Compile Include="Dsl\ICommandLineSetupFactory.cs" />
     <Compile Include="Dsl\IParser.cs" />
+    <Compile Include="Dsl\JunctionPoint.cs" />
     <Compile Include="Dsl\NUnitConfiguration.cs" />
     <Compile Include="Dsl\NUnitRunner.cs" />
     <Compile Include="Dsl\NUnitVersion.cs" />
     <Compile Include="Dsl\OutputSummary.cs" />
-    <Compile Include="Dsl\PathUtilities.cs" />
     <Compile Include="Dsl\ProjectCommandLineSetupFactory.cs" />
     <Compile Include="Dsl\ResourceManager.cs" />
     <Compile Include="Dsl\StringEnumExtensions.cs" />

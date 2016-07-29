@@ -3,6 +3,7 @@
 Background:
 	Given NUnit path is ..\nunit\
 	
+@ignore
 Scenario Outline: Agent is finished when AppDomain did not unloaded correctly
 	Given Framework version is <frameworkVersion>	
 	And I have added UnloadingDomain method as UnloadingDomain to the class Foo.Tests.UnitTests1 for foo.tests

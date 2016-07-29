@@ -154,65 +154,8 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("NUnit returns negative exit code when the some part of NUnit console is not exist" +
-            "")]
-        [NUnit.Framework.CategoryAttribute("teamcity")]
-        [NUnit.Framework.TestCaseAttribute("Version20", "nunit.engine.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version45", "nunit.engine.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version40", "nunit.engine.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version20", "nunit.engine.api.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version45", "nunit.engine.api.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version40", "nunit.engine.api.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version20", "Mono.Cecil.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version45", "Mono.Cecil.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version40", "Mono.Cecil.dll", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version20", "nunit-agent.exe", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version45", "nunit-agent.exe", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version40", "nunit-agent.exe", new string[0])]
-        public virtual void NUnitReturnsNegativeExitCodeWhenTheSomePartOfNUnitConsoleIsNotExist(string frameworkVersion, string nunitConsolePart, string[] exampleTags)
-        {
-            string[] @__tags = new string[] {
-                    "teamcity"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns negative exit code when the some part of NUnit console is not exist" +
-                    "", @__tags);
-#line 45
-this.ScenarioSetup(scenarioInfo);
-#line 3
-this.FeatureBackground();
-#line 46
- testRunner.Given(string.Format("Framework version is {0}", frameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 47
- testRunner.And("I have added successful method as SuccessfulTest to the class Foo.Tests.UnitTests" +
-                    "1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 48
- testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 49
- testRunner.And("I have added NUnit framework references to foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 50
- testRunner.And("I have copied NUnit framework references to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 51
- testRunner.And("I have compiled the assembly foo.tests to file mocks\\foo.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 52
- testRunner.And("I have added the assembly mocks\\foo.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 53
- testRunner.When(string.Format("I remove {0} from NUnit folder", nunitConsolePart), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 54
- testRunner.And("I run NUnit console", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 55
- testRunner.Then("the exit code should be negative", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("NUnit returns exit code -100 when the test throws StackOverflow exception")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
-        [NUnit.Framework.TestCaseAttribute("Version45", "InProcess", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Version40", "InProcess", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "Separate", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "Separate", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version45", "Multiple", new string[0])]
@@ -226,32 +169,32 @@ this.FeatureBackground();
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns exit code -100 when the test throws StackOverflow exception", @__tags);
-#line 73
+#line 45
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 74
+#line 46
  testRunner.Given(string.Format("Framework version is {0}", frameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 75
+#line 47
  testRunner.And("I have added failedStackOverflow method as FailedStackOverflow to the class Foo.T" +
                     "ests.UnitTests1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 76
+#line 48
  testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 77
+#line 49
  testRunner.And("I have added NUnit framework references to foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 78
+#line 50
  testRunner.And("I have copied NUnit framework references to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 79
+#line 51
  testRunner.And("I have compiled the assembly foo.tests to file mocks\\foo.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 80
+#line 52
  testRunner.And("I have added the assembly mocks\\foo.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 81
+#line 53
  testRunner.And("I want to use CmdArguments type of TeamCity integration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 82
+#line 54
  testRunner.And(string.Format("I have added the arg Process={0} to NUnit console command line", process), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 83
+#line 55
  testRunner.When("I run NUnit console", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 84
+#line 56
  testRunner.Then("the exit code should be -100", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -259,6 +202,7 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("NUnit returns positive exit code when the test throws OutOfMemory exception")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("teamcity")]
         [NUnit.Framework.TestCaseAttribute("Version45", "InProcess", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Version40", "InProcess", new string[0])]
@@ -269,38 +213,39 @@ this.FeatureBackground();
         public virtual void NUnitReturnsPositiveExitCodeWhenTheTestThrowsOutOfMemoryException(string frameworkVersion, string process, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "teamcity"};
+                    "teamcity",
+                    "ignore"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("NUnit returns positive exit code when the test throws OutOfMemory exception", @__tags);
-#line 96
+#line 69
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 97
+#line 70
  testRunner.Given(string.Format("Framework version is {0}", frameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 98
+#line 71
  testRunner.And("I have added failedOutOfMemory method as FailedOutOfMemory to the class Foo.Tests" +
                     ".UnitTests1 for foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 99
+#line 72
  testRunner.And("I have created the folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 100
+#line 73
  testRunner.And("I have added NUnit framework references to foo.tests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 101
+#line 74
  testRunner.And("I have copied NUnit framework references to folder mocks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 102
+#line 75
  testRunner.And("I have compiled the assembly foo.tests to file mocks\\foo.tests.dll", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 103
+#line 76
  testRunner.And("I have added the assembly mocks\\foo.tests.dll to the list of testing assemblies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 104
+#line 77
  testRunner.And("I want to use CmdArguments type of TeamCity integration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 105
+#line 78
  testRunner.And(string.Format("I have added the arg Process={0} to NUnit console command line", process), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 106
+#line 79
  testRunner.When("I run NUnit console", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 107
+#line 80
  testRunner.Then("the exit code should be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -321,7 +266,7 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "Skipped",
                         "0"});
-#line 108
+#line 81
  testRunner.And("the Test Run Summary should has following:", ((string)(null)), table1, "And ");
 #line hidden
             this.ScenarioCleanup();
